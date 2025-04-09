@@ -37,7 +37,6 @@ public class User {
     @Column(columnDefinition = "varchar(20) not null unique")
     private String email;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(columnDefinition = "date not null")
     private LocalDate registrationDate;
 }
