@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findUserById(Integer id);
 
-    // find users registers before date by date
-    @Query("select u from User u where u.registration_date<?1")
+    // 7. find users registers before date by date
+    @Query("select u from User u where u.registrationDate<?1")
     List<User> findUsersByDate(LocalDate date);
 }

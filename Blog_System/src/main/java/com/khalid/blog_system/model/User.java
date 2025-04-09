@@ -39,5 +39,5 @@ public class User {
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @Column(columnDefinition = "date not null")
-    private LocalDate registration_date;
+    private LocalDate registrationDate;
 }

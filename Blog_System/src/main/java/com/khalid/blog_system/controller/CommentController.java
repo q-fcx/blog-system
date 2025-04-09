@@ -62,7 +62,17 @@ public class CommentController {
         return ResponseEntity.status(200).body(commentService.getCommentByPostId(id));
     }
 
+    @GetMapping("get-comment/{id}")
     public ResponseEntity getCommentByUserId(@PathVariable Integer id) {
         return ResponseEntity.status(200).body(commentService.getCommentByUserId(id));
+    }
+
+    @DeleteMapping("/delete-comment/{userId}/{postId}/{commentId}")
+    public ResponseEntity deleteCommentByUserIdAndPostId(@PathVariable Integer userId, @PathVariable Integer postId, @PathVariable Integer commentId) {
+        Boolean isDeleted = commentService.deleteCommentByUserIdAndPostId(userId,postId,commentId);
+        if(isDeleted) {
+            return ResponseEntity.status(200).body("Comment in the post deleted");
+        }
+        return ResponseEntity.status(400).body("id not found");
     }
 }

@@ -64,4 +64,15 @@ public class CommentService {
     public List<Comment> getCommentByUserId(Integer id) {
         return commentRepository.findCommentsByUserId(id);
     }
+    // 9. delete comment in a post by user id and post id
+    public Boolean deleteCommentByUserIdAndPostId(Integer userId, Integer postId, Integer commentId) {
+        User user = userRepository.findUserById(userId);
+        Post post = postRepository.findPostById(postId);
+        Comment comment = commentRepository.findCommentById(commentId);
+        if(user == null && post == null && comment == null) {
+            return false;
+        }
+        commentRepository.delete(comment);
+        return true;
+    }
 }

@@ -2,7 +2,7 @@ package com.khalid.blog_system.service;
 
 import com.khalid.blog_system.model.User;
 import com.khalid.blog_system.repository.UserRepository;
-import lombok.NoArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,7 @@ public class UserService {
     }
 
     public void addUser(User user) {
+        user.setRegistrationDate(LocalDate.now());
         userRepository.save(user);
     }
 
@@ -31,7 +32,7 @@ public class UserService {
         oldUser.setUsername(user.getUsername());
         oldUser.setEmail(user.getEmail());
         oldUser.setPassword(user.getPassword());
-        oldUser.setRegistration_date(user.getRegistration_date());
+        oldUser.setRegistrationDate(user.getRegistrationDate());
 
         userRepository.save(oldUser);
         return true;
@@ -48,5 +49,6 @@ public class UserService {
 
     public List<User> getUsersByDate(LocalDate date) {
         return userRepository.findUsersByDate(date);
+
     }
 }

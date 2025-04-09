@@ -30,6 +30,7 @@ public class PostService {
         if(user == null && category == null){
             return false;
         }
+        post.setPublishDate(LocalDate.now());
         postRepository.save(post);
         return true;
     }
