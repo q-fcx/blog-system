@@ -31,7 +31,6 @@ public class Post {
     @Column(columnDefinition = "varchar(20) not null")
     private String content;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(columnDefinition = "varchar(20) not null")
     private LocalDate publishDate;
 
